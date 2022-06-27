@@ -1,0 +1,109 @@
+:root {
+    --mint: #a1fcdf;
+    --pink: #d5aca9;
+    --white: #fffcf2;
+    --green: #84dccf;
+    --red: #ef626c;
+    --darkgrey: #312f2f;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica', Arial, sans-serif;
+}
+
+body {
+    background-color: var(--white);
+}
+
+header {
+    background-color: var(--white);
+    padding: 20px 35px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+header h1 a {
+    font-weight: normal;
+    font-size: 20px;
+    letter-spacing: -1px;
+    text-decoration: none;
+    color: var(--darkgrey);
+    margin: 0;
+    padding: 10px 15px;
+}
+
+header h1 a:hover {
+    color: var(--white);
+    background-color: var(--red);
+    border-radius: 10px;
+}
+
+header nav {
+    margin: 7px 0;
+}
+
+header nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+header nav ul li a {
+    padding: 10px 15px;
+    font-weight: lighter;
+    font-size: 18px;
+    transition: color 1.5s ease-in-out 0s;
+}
+
+header nav ul li a:hover {
+    color: var(--green);
+    border-bottom: var(--red);
+}
+
+.container {
+    margin: 0px auto;
+    padding: 50px;
+    display: flex;
+    width: 800px;
+    max-width: 80%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 30px;
+}
+
+#question {
+    font-size: 44px;
+    letter-spacing: -2px;
+    color: var(--red);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.btn {
+    border: none;
+    background-color: var(--red);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
+    color: var(--white);
+    display: inline-block;
+    font-size: 22px;
+    line-height: 22px;
+    margin: 20px;
+    padding: 14px 34px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  button[disabled] {
+    cursor: default;
+    background: #c0c7cf;
+  }
