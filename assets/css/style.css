@@ -18,6 +18,8 @@ body {
     background-color: var(--white);
 }
 
+/* header styles */
+
 header {
     background-color: var(--white);
     padding: 20px 35px;
@@ -66,6 +68,8 @@ header nav ul li a:hover {
     border-bottom: var(--red);
 }
 
+/* questions container */
+
 .container {
     margin: 0px auto;
     padding: 50px;
@@ -75,18 +79,35 @@ header nav ul li a:hover {
     height: 100%;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     background-color: #ffffff;
     border: 1px solid #dddddd;
     border-radius: 30px;
 }
 
-#question {
+#question h2 {
     font-size: 44px;
     letter-spacing: -2px;
     color: var(--darkgrey);
     text-align: center;
     margin-bottom: 20px;
 }
+
+.container .intro p {
+    text-align: center;
+    line-height: 2em;
+    margin-bottom: 20px;
+}
+
+.container .intro h2 {
+    font-size: 44px;
+    letter-spacing: -2px;
+    color: var(--darkgrey);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* buttons edit */
 
 .btn-grid {
     display: flex;
@@ -101,33 +122,32 @@ header nav ul li a:hover {
     background-color: #568ea3;
     border: none;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
     display: inline-block;
     color: var(--white);
     font-size: 22px;
-    line-height: 22px;
     margin: 20px;
     padding: 15px 60px;
     text-align: center;
     cursor: pointer;
-  }
+}
 
-  .btn:hover {
+.btn:hover {
     background-color: #95bfce;
-  }
+}
 
-  .btn.correct {
+.btn.correct {
     background-color: var(--green);
-  }
+}
 
-  .btn.wrong {
+.btn.wrong {
     background-color: var(--red);
 }
 
-.navigate {
+.container .navigate {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .start-btn, .next-btn {
@@ -144,6 +164,8 @@ button[disabled] {
     cursor: default;
     background: #c0c7cf;
 }
+
+/* footer styles */
 
 footer {
     margin: 50px auto;
@@ -164,5 +186,4 @@ footer a:hover {
     border-radius: 5px;
     text-decoration: none;
     padding: 5px;
-
 }
