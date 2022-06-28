@@ -1,7 +1,9 @@
 let startButton = document.getElementById('start-btn');
 let intro = document.getElementById('intro');
 let questionContainerEl = document.getElementById('question-container');
+
 startButton.addEventListener('click', startGame);
+
 let score = 0;
 let questionEl = document.getElementById('question');
 let answerButtonEl = document.getElementById('answer-button');
@@ -13,6 +15,18 @@ function startGame() {
     intro.classList.add('hidden');
     questionContainerEl.classList.remove('hidden');
     nextQuestion();
+    timer();
+}
+
+// create timer
+function timer() {
+    var sec = 60;
+    var timer = setInterval(function() {
+        document.getElementById('timeLeft').innerHTML='00:'+sec;sec--;
+        if (sec < 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
 }
 
 // initiate the next question
