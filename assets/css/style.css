@@ -83,25 +83,62 @@ header nav ul li a:hover {
 #question {
     font-size: 44px;
     letter-spacing: -2px;
-    color: var(--red);
+    color: var(--darkgrey);
     text-align: center;
     margin-bottom: 20px;
 }
 
+.btn-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+    justify-content: center;
+    align-items: center;
+}
+
 .btn {
+    background-color: #568ea3;
     border: none;
-    background-color: var(--red);
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
-    color: var(--white);
     display: inline-block;
+    color: var(--white);
     font-size: 22px;
     line-height: 22px;
     margin: 20px;
-    padding: 14px 34px;
+    padding: 15px 60px;
     text-align: center;
     cursor: pointer;
   }
+
+  .btn:hover {
+    background-color: #95bfce;
+  }
+
+  .btn.correct {
+    background-color: var(--green);
+  }
+
+  .btn.wrong {
+    background-color: var(--red);
+}
+
+.navigate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-btn, .next-btn {
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px 60px;
+}
+/*
+.hidden {
+    display: none;
+} */
   
   button[disabled] {
     cursor: default;
