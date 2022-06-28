@@ -1,7 +1,7 @@
 :root {
     --mint: #a1fcdf;
     --pink: #d5aca9;
-    --white: #fffcf2;
+    --white: #fffcf9;
     --green: #84dccf;
     --red: #ef626c;
     --darkgrey: #312f2f;
@@ -135,12 +135,34 @@ header nav ul li a:hover {
     font-weight: bold;
     padding: 20px 60px;
 }
-/*
+
 .hidden {
     display: none;
-} */
+}
   
-  button[disabled] {
+button[disabled] {
     cursor: default;
     background: #c0c7cf;
-  }
+}
+
+footer {
+    margin: 50px auto;
+    font-size: 14px;
+    letter-spacing: -0.3px;
+    text-align: center;
+}
+
+footer a {
+    color: #568ea3;
+    text-decoration: none;
+    padding: 5px;
+}
+
+footer a:hover {
+    color: var(--white);
+    background-color: #568ea3;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 5px;
+
+}
