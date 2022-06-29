@@ -125,7 +125,7 @@ h2 {
     display: inline-block;
     color: var(--white);
     font-size: 22px;
-    margin: 20px;
+    margin: 10px;
     padding: 15px 60px;
     text-align: center;
     cursor: pointer;
@@ -133,6 +133,14 @@ h2 {
 
 .btn:hover {
     background-color: #95bfce;
+}
+
+body.correct {
+    background-color: var(--green);
+}
+
+body.wrong {
+    background-color: var(--red);
 }
 
 .btn.correct {

@@ -47,12 +47,12 @@ function nextQuestion() {
 
 function showQuestion(question) {
     questionEl.innerText = question.question;
-    question.answers.forEach(answers => {
+    question.answer.forEach(answer => {
         const button = document.createElement('button');
-        button.innerText = answers.text
+        button.innerText = answer.text
         button.classList.add('btn');
-        if (answers.correct) {
-            button.dataset.correct = answers.correct
+        if (answer.correct) {
+            button.dataset.correct = answer.correct
         }
         button.addEventListener('click', chooseAnswer);
         answerButtonEl.appendChild(button);
@@ -62,19 +62,39 @@ function showQuestion(question) {
 function resetState() {
     nextButton.classList.add('hidden');
     while (answerButtonEl.firstChild) {
-        answerButtonEl.removeChild(answerButtonEl.firstChild)
+        answerButtonEl.removeChild(answerButtonEl.firstChild);
     }
 };
 
 // answering a question
-function chooseAnswer() {
-
+function chooseAnswer(e) {
+    const answerButton = e.target;
+    const correct = answerButton.dataset.correct;
+    setStatus(document.getElementById('answer-buttons'), correct);
+    Array.from(answerButtonEl.children).forEach(button => {
+        setStatus(button, button.dataset.correct)
+    })
+    nextButton.classList.remove('hidden');
 };
+
+function setStatus(element, correct) {
+    clearStatus(element);
+    if (correct) {
+        element.classList.add('correct');
+    } else {
+        element.classList.add('wrong');
+    }
+};
+
+function clearStatus(element) {
+    element.classList.remove('correct');
+    element.classList.remove('wrong');
+}
 
 let questions = [
     {
         question: 'Commonly used data types DO NOT include:',
-        answers: [
+        answer: [
             { text: '1. strings', correct: false },
             { text: '2. booleans', correct: false },
             { text: '3. alerts', correct: true },
@@ -83,7 +103,7 @@ let questions = [
     },
     {
         question: 'The condition in an if / else statement is enclosed with ___.',
-        answers: [
+        answer: [
             { text: 'a', correct: true },
             { text: 'b', correct: false },
             { text: 'c', correct: false },
@@ -92,7 +112,7 @@ let questions = [
     },
     {
         question: 'Arrays in JavaScript is used to store ___.',
-        answers: [
+        answer: [
             { text: 'a', correct: true },
             { text: 'b', correct: false },
             { text: 'c', correct: false },
@@ -101,7 +121,7 @@ let questions = [
     },
     {
         question: 'Strong values must be enclosed within ___ when being assigned to variables.',
-        answers: [
+        answer: [
             { text: 'a', correct: true },
             { text: 'b', correct: false },
             { text: 'c', correct: false },
@@ -110,7 +130,7 @@ let questions = [
     },
     {
         question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
-        answers: [
+        answer: [
             { text: 'a', correct: true },
             { text: 'b', correct: false },
             { text: 'c', correct: false },
