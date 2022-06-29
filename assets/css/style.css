@@ -25,23 +25,30 @@ header {
     padding: 20px 35px;
     display: flex;
     justify-content: space-between;
+    width: 100%;
     flex-wrap: wrap;
 }
 
-header h1 a {
+.score-btn {
     font-weight: normal;
     font-size: 20px;
     letter-spacing: -1px;
     text-decoration: none;
     color: var(--darkgrey);
-    margin: 0;
     padding: 10px 15px;
+
+    background-color: var(--white);
+    border: none;
+    border-radius: 10px;
+    width: auto;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
 }
 
-header h1 a:hover {
+.score-btn:hover {
+    background-color: #568ea3;
     color: var(--white);
-    background-color: var(--red);
-    border-radius: 10px;
 }
 
 header nav {
@@ -49,23 +56,15 @@ header nav {
 }
 
 header nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
     list-style: none;
 }
 
-header nav ul li a {
+span {
+    color: var(--darkgrey);
+    font-weight: normal;
+    font-size: 20px;
+    letter-spacing: -1px;
     padding: 10px 15px;
-    font-weight: lighter;
-    font-size: 18px;
-    transition: color 1.5s ease-in-out 0s;
-}
-
-header nav ul li a:hover {
-    color: var(--green);
-    border-bottom: var(--red);
 }
 
 /* questions container */
@@ -122,6 +121,7 @@ h2 {
     background-color: #568ea3;
     border: none;
     border-radius: 10px;
+    width: 50%;
     display: inline-block;
     color: var(--white);
     font-size: 22px;
