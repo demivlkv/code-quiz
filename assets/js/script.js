@@ -7,6 +7,10 @@ const answerButtonEl = document.getElementById('answer-buttons');
 const timeDisplay = document.getElementById('timer');
 
 startButton.addEventListener('click', startGame);
+nextButton.addEventListener('click', () => {
+    currentQuestionIndex++
+    nextQuestion();
+});
 
 let score = 0;
 let shuffleQuestions, currentQuestionIndex;
@@ -74,7 +78,12 @@ function chooseAnswer(e) {
     Array.from(answerButtonEl.children).forEach(button => {
         setStatus(button, button.dataset.correct)
     })
+    if(shuffleQuestions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove('hidden');
+    } else {
+        startButton.innerText = 'Restart';
+        startButton.classList.remove('hidden');
+    }
 };
 
 function setStatus(element, correct) {
@@ -104,37 +113,37 @@ let questions = [
     {
         question: 'The condition in an if / else statement is enclosed with ___.',
         answer: [
-            { text: 'a', correct: true },
-            { text: 'b', correct: false },
-            { text: 'c', correct: false },
-            { text: 'd', correct: false }
+            { text: '1. quotes', correct: false },
+            { text: '2. curly brackets', correct: false },
+            { text: '3. parenthesis', correct: true },
+            { text: '4. square brackets', correct: false }
         ]
     },
     {
         question: 'Arrays in JavaScript is used to store ___.',
         answer: [
-            { text: 'a', correct: true },
-            { text: 'b', correct: false },
-            { text: 'c', correct: false },
-            { text: 'd', correct: false }
+            { text: '1. numbers and strings', correct: false },
+            { text: '2. other arrays', correct: false },
+            { text: '3. booleans', correct: false },
+            { text: '4. all of the above', correct: true }
         ]
     },
     {
-        question: 'Strong values must be enclosed within ___ when being assigned to variables.',
+        question: 'String values must be enclosed within ___ when being assigned to variables.',
         answer: [
-            { text: 'a', correct: true },
-            { text: 'b', correct: false },
-            { text: 'c', correct: false },
-            { text: 'd', correct: false }
+            { text: '1. commas', correct: false },
+            { text: '2. curly brackets', correct: false },
+            { text: '3. quotes', correct: true },
+            { text: '4. parenthesis', correct: false }
         ]
     },
     {
         question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
         answer: [
-            { text: 'a', correct: true },
-            { text: 'b', correct: false },
-            { text: 'c', correct: false },
-            { text: 'd', correct: false }
+            { text: '1. JavaScript', correct: false },
+            { text: '2. terminal/bash', correct: false },
+            { text: '3. for loops', correct: false },
+            { text: '4. console.log', correct: true }
         ]
     }
 ];
