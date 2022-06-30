@@ -26,7 +26,7 @@ function startQuiz() {
 
 // countdown timer
 function timer() {
-    let sec = 59;
+    let sec = 60;
     var countDown = setInterval(function() {
         sec = sec < 10 ? '0' + sec : sec;
         displayTime.innerHTML = `Time Remaining 00:${sec}`;
@@ -76,6 +76,7 @@ function displayQuestion(question) {
             } else {
                 endQuiz();
                 highScores();
+                debugger;
             }
         })
         answerButtonEl.appendChild(answerButton);
@@ -85,15 +86,15 @@ function displayQuestion(question) {
 // display 'correct' after correct response
 function answerCorrect() {
     displayAnswer.classList.remove('hide');
-    displayAnswer.classList.add('correct');
     displayAnswer.textContent = 'Correct!';
+    displayAnswer.setAttribute('style', 'color: #84dccf');
 };
 
 // display 'wrong' after incorrect response
 function answerWrong() {
     displayAnswer.classList.remove('hide');
-    displayAnswer.classList.add('wrong');
     displayAnswer.textContent = 'Wrong!';
+    displayAnswer.setAttribute('style', 'color: #ef626c');
 };
 
 // end of the quiz

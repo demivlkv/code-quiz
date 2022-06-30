@@ -135,14 +135,6 @@ h2 {
     background-color: #95bfce;
 }
 
-.btn.correct {
-    background-color: var(--green);
-}
-
-.btn.wrong {
-    background-color: var(--red);
-}
-
 .container .navigate {
     display: flex;
     justify-content: center;
