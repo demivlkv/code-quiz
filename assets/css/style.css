@@ -135,14 +135,6 @@ h2 {
     background-color: #95bfce;
 }
 
-body.correct {
-    background-color: var(--green);
-}
-
-body.wrong {
-    background-color: var(--red);
-}
-
 .btn.correct {
     background-color: var(--green);
 }
@@ -158,13 +150,13 @@ body.wrong {
     width: 100%;
 }
 
-.start-btn, .next-btn {
+.start-btn {
     font-size: 30px;
     font-weight: bold;
     padding: 20px 60px;
 }
 
-.hidden {
+.hide {
     display: none;
 }
   
@@ -177,21 +169,16 @@ button[disabled] {
 
 footer {
     margin: 50px auto;
-    font-size: 14px;
-    letter-spacing: -0.3px;
+    font-size: 40px;
+    letter-spacing: -1px;
     text-align: center;
+    font-weight: none;
 }
 
-footer a {
-    color: #568ea3;
-    text-decoration: none;
-    padding: 5px;
+footer.correct {
+    color: var(--green);
 }
 
-footer a:hover {
-    color: var(--white);
-    background-color: #568ea3;
-    border-radius: 5px;
-    text-decoration: none;
-    padding: 5px;
+footer.wrong {
+    color: var(--red);
 }
