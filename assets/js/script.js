@@ -1,10 +1,10 @@
-const timeDisplay = document.getElementById('timer');
+const displayTime = document.getElementById('timer');
 const questionContainerEl = document.getElementById('question-container');
 const intro = document.getElementById('intro');
 const questionEl = document.getElementById('question');
 const answerButtonEl = document.getElementById('answer-buttons');
 const startButton = document.getElementById('start-btn');
-const answer = document.getElementById('answer');
+const displayAnswer = document.getElementById('answer');
 
 startButton.addEventListener('click', startQuiz);
 
@@ -16,11 +16,12 @@ function startQuiz() {
     startButton.classList.add('hide');
     intro.classList.add('hide');
     questionContainerEl.classList.remove('hide');
-    timeDisplay.classList.remove('hide');
+    displayTime.classList.remove('hide');
     shuffleQuestions = questions.sort(() => Math.random() - .5);
     currentQuestionIndex = 0;
     timer();
     setQuestion();
+    console.log(shuffleQuestions);
 };
 
 // countdown timer
@@ -28,7 +29,7 @@ function timer() {
     let sec = 59;
     var countDown = setInterval(function() {
         sec = sec < 10 ? '0' + sec : sec;
-        timeDisplay.innerHTML = `Time Remaining 00:${sec}`;
+        displayTime.innerHTML = `Time Remaining 00:${sec}`;
         sec--;
 
         if (sec < 0) {
@@ -54,50 +55,45 @@ function resetState() {
 // display questions & answer buttons
 function displayQuestion(question) {
     questionEl.innerText = question.question;
-    for (var i = 0; i < question.answer.length; i++) {
+    for (let i = 0; i < question.answer.length; i++) {
         let answerButton = document.createElement('button');
         answerButton.innerText = question.answer[i].text;
         answerButton.classList.add('btn');
-        answerButton.addEventListener('click', checkAnswer);
+        answerButton.addEventListener('click', function () {
+            // display 'correct' or 'wrong' after choosing an answer
+            let answer = question.answer[i].correct;
+            if (answer) {
+                answerCorrect();
+                score++;
+            } else {
+                answerWrong();
+                score--;
+            } 
+            // set up the next question after choosing an answer
+            if (shuffleQuestions.length > currentQuestionIndex + 1) {
+                currentQuestionIndex++;
+                setQuestion();
+            } else {
+                endQuiz();
+                highScores();
+            }
+        })
         answerButtonEl.appendChild(answerButton);
     }
 };
 
 // display 'correct' after correct response
 function answerCorrect() {
-    if (answer.className = 'hide') {
-        answer.classList.remove('hide');
-        answer.classList.add('correct');
-        answer.textContent = 'Correct!';
-    }
+    displayAnswer.classList.remove('hide');
+    displayAnswer.classList.add('correct');
+    displayAnswer.textContent = 'Correct!';
 };
 
 // display 'wrong' after incorrect response
 function answerWrong() {
-    if (answer.className = 'hide') {
-        answer.classList.remove('hide');
-        answer.classList.add('wrong');
-        answer.textContent = 'Wrong!';
-    }
-};
-
-// display correct or wrong answer and add time penalty response if incorrect
-function checkAnswer(answer) {
-    if (questions[currentQuestionIndex].answer == answer) {
-        answerCorrect();
-        score++;
-    } else {
-        answerWrong();
-        score--;
-    } 
-    if (shuffleQuestions.length > currentQuestionIndex + 1) {
-        currentQuestionIndex++;
-        setQuestion();
-    } else {
-        endQuiz();
-        clearInterval(countDown);
-        showScore();
-    }
+    displayAnswer.classList.remove('hide');
+    displayAnswer.classList.add('wrong');
+    displayAnswer.textContent = 'Wrong!';
 };
 
 // end of the quiz
@@ -105,8 +101,12 @@ function endQuiz() {
     startButton.classList.remove('hide');
     intro.classList.remove('hide');
     questionContainerEl.classList.add('hide');
-    timeDisplay.classList.add('hide');
+    displayTime.classList.add('hide');
     intro.textContent = "You're done!"
+};
+
+function highScores() {
+
 };
 
 let questions = [
