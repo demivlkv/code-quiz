@@ -68,8 +68,9 @@ function displayQuestion(question) {
             } else {
                 answerWrong();
                 score--;
-            } 
-            // set up the next question after choosing an answer
+            }
+
+            // set up the next question after choosing an answer or end quiz if no questions left
             if (shuffleQuestions.length > currentQuestionIndex + 1) {
                 currentQuestionIndex++;
                 setQuestion();
@@ -78,7 +79,12 @@ function displayQuestion(question) {
                 highScores();
                 debugger;
             }
-        })
+
+            // 'correct' or 'wrong' disappears after 3 sec
+            setTimeout(function() {
+                displayAnswer.classList.add('hide');
+            }, 3000);
+        });
         answerButtonEl.appendChild(answerButton);
     }
 };

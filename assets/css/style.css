@@ -166,11 +166,3 @@ footer {
     text-align: center;
     font-weight: none;
 }
-
-footer.correct {
-    color: var(--green);
-}
-
-footer.wrong {
-    color: var(--red);
-}
