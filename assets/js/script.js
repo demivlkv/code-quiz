@@ -9,6 +9,7 @@ const highScore = document.getElementById('high-score');
 
 startButton.addEventListener('click', startQuiz);
 
+let sec = 60;
 let score = 0;
 let shuffleQuestions, currentQuestionIndex;
 
@@ -27,10 +28,9 @@ function startQuiz() {
 
 // countdown timer
 function timer() {
-    let sec = 60;
     var countDown = setInterval(function() {
         sec = sec < 10 ? '0' + sec : sec;
-        displayTime.innerHTML = `Time Remaining 00:${sec}`;
+        displayTime.innerHTML = 'Time Remaining 00:' + sec;
         sec--;
 
         if (sec < 0) {
@@ -68,7 +68,7 @@ function displayQuestion(question) {
                 score++;
             } else {
                 answerWrong();
-                score--;
+                sec -= 10;
             }
 
             // set up the next question after choosing an answer or end quiz if no questions left
@@ -78,13 +78,12 @@ function displayQuestion(question) {
             } else {
                 endQuiz();
                 highScores();
-                debugger;
             }
 
-            // 'correct' or 'wrong' disappears after 3 sec
+            // 'correct' or 'wrong' disappears after 2.5 sec
             setTimeout(function() {
                 displayAnswer.classList.add('hide');
-            }, 3000);
+            }, 2500);
         });
         answerButtonEl.appendChild(answerButton);
     }
@@ -161,6 +160,51 @@ let questions = [
             { text: '2. terminal/bash', correct: false },
             { text: '3. for loops', correct: false },
             { text: '4. console.log', correct: true }
+        ]
+    },
+    {
+        question: 'Which of the following is not a valid JavaScript variable name?',
+        answer: [
+            { text: '1. 2names', correct: true },
+            { text: '2. _first_and_last_name', correct: false },
+            { text: '3. FirstAndLast', correct: false },
+            { text: '4. none of the above', correct: false }
+        ]
+    },
+    {
+        question: 'Which of the following are capabilities of functions in JavaScript?',
+        answer: [
+            { text: '1. return a value', correct: false },
+            { text: '2. accept parameters', correct: true },
+            { text: '3. both 1 and 2', correct: false },
+            { text: '4. none of the above', correct: false }
+        ]
+    },
+    {
+        question: 'Javascript is an ___ language?',
+        answer: [
+            { text: '1. object-oriented', correct: true },
+            { text: '2. object-based', correct: false },
+            { text: '3. procedrual', correct: false },
+            { text: '4. none of the above', correct: false }
+        ]
+    },
+    {
+        question: "Which declaration provides the value of a function?",
+        answer: [
+            { text: '1. cancel', correct: false },
+            { text: '2. return', correct: true },
+            { text: '3. continue', correct: false },
+            { text: '4. valueOf', correct: false }
+        ]
+    },
+    {
+        question: "How are objects compared when they are checked with the strict equality operator?",
+        answer: [
+            { text: '1. their references are compared', correct: true },
+            { text: '2. the contents of the objects are compared', correct: false },
+            { text: '3. both 1 and 2', correct: false },
+            { text: '4. none of the above', correct: false }
         ]
     }
 ];
