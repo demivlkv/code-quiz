@@ -5,6 +5,7 @@ const questionEl = document.getElementById('question');
 const answerButtonEl = document.getElementById('answer-buttons');
 const startButton = document.getElementById('start-btn');
 const displayAnswer = document.getElementById('answer');
+const highScore = document.getElementById('high-score');
 
 startButton.addEventListener('click', startQuiz);
 
@@ -109,7 +110,7 @@ function endQuiz() {
     intro.classList.remove('hide');
     questionContainerEl.classList.add('hide');
     displayTime.classList.add('hide');
-    intro.textContent = "You're done!"
+    intro.innerHTML = "<h2>All Done!</h2>Your final score is ___.";
 };
 
 function highScores() {
