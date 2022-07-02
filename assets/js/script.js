@@ -7,6 +7,8 @@ const startButton = document.getElementById('start-btn');
 const displayAnswer = document.getElementById('answer');
 const outro = document.getElementById('outro');
 const highScore = document.getElementById('high-score');
+const initialsEl = document.getElementById('user-initials');
+const submitScoreEl = document.getElementById('submit-btn');
 
 startButton.addEventListener('click', startQuiz);
 
@@ -79,7 +81,6 @@ function displayQuestion(question) {
                 setQuestion();
             } else {
                 endQuiz();
-                highScores();
             }
 
             // 'correct' or 'wrong' disappears after 2 sec
@@ -105,20 +106,35 @@ function answerWrong() {
     displayAnswer.setAttribute('style', 'color: #ef626c');
 };
 
-// end of the quiz
+// end quiz and display user score
 function endQuiz() {
     // stop timer
     clearInterval(countDown);
-    
+
     outro.classList.remove('hide');
     questionContainerEl.classList.add('hide');
     // display score
     displayTime.textContent = 'Score: ' + sec;
     highScore.innerHTML = sec;
+    submitScoreEl.addEventListener('click', saveHighScore);
 };
 
-function highScores() {
+// submit new score
+function saveHighScore(event) {
+    event.preventDefault();
+    let initials = initialsEl.value;
 
+    // set valid input for submitting initials
+    if (initials.length <= 1) {
+        alert("Please enter your initials.");
+        return;
+    }
+
+    // save to localStorage
+    localStorage.setItem("highScore", JSON.stringify(highScore));
+
+    // redirect user to high score page
+    window.location.href = "./highscores.html";
 };
 
 let questions = [
