@@ -23,19 +23,22 @@ function startQuiz() {
     currentQuestionIndex = 0;
     timer();
     setQuestion();
-    console.log(shuffleQuestions);
 };
 
 // countdown timer
 function timer() {
-    var countDown = setInterval(function() {
-        sec = sec < 10 ? '0' + sec : sec;
-        displayTime.innerHTML = 'Time Remaining 00:' + sec;
-        sec--;
+    let countDown = setInterval(function() {
 
-        if (sec < 0) {
-            clearInterval(countDown);
-            alert("You're out of time!");
+    if (sec > 1) {    
+        displayTime.innerHTML = 'Time Remaining: ' + sec + ' seconds';
+        sec--;
+    } else if (sec === 1) {
+        displayTime.innerHTML = 'Time Remaining: ' + sec + ' second';
+        sec--;
+    } else {
+        clearInterval(countDown);
+        displayTime.textContent = 'Time Remaining: 0!';
+        endQuiz();
         }
     }, 1000);
 };
@@ -68,7 +71,7 @@ function displayQuestion(question) {
                 score++;
             } else {
                 answerWrong();
-                sec -= 10;
+                sec -= 10; // incorrect answer subtracts 10 sec from time
             }
 
             // set up the next question after choosing an answer or end quiz if no questions left
@@ -80,10 +83,10 @@ function displayQuestion(question) {
                 highScores();
             }
 
-            // 'correct' or 'wrong' disappears after 2.5 sec
+            // 'correct' or 'wrong' disappears after 2 sec
             setTimeout(function() {
                 displayAnswer.classList.add('hide');
-            }, 2500);
+            }, 2000);
         });
         answerButtonEl.appendChild(answerButton);
     }
@@ -105,11 +108,13 @@ function answerWrong() {
 
 // end of the quiz
 function endQuiz() {
+    // stop timer
+    clearInterval(timer);
     startButton.classList.remove('hide');
     intro.classList.remove('hide');
     questionContainerEl.classList.add('hide');
     displayTime.classList.add('hide');
-    intro.innerHTML = "<h2>All Done!</h2>Your final score is ___.";
+    intro.innerHTML = "<h2>All Done!</h2><p>Your final score is ___.</p>";
 };
 
 function highScores() {
