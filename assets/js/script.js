@@ -5,10 +5,12 @@ const questionEl = document.getElementById('question');
 const answerButtonEl = document.getElementById('answer-buttons');
 const startButton = document.getElementById('start-btn');
 const displayAnswer = document.getElementById('answer');
+const outro = document.getElementById('outro');
 const highScore = document.getElementById('high-score');
 
 startButton.addEventListener('click', startQuiz);
 
+let countDown;
 let sec = 60;
 let score = 0;
 let shuffleQuestions, currentQuestionIndex;
@@ -27,18 +29,16 @@ function startQuiz() {
 
 // countdown timer
 function timer() {
-    let countDown = setInterval(function() {
-
-    if (sec > 1) {    
-        displayTime.innerHTML = 'Time Remaining: ' + sec + ' seconds';
-        sec--;
-    } else if (sec === 1) {
-        displayTime.innerHTML = 'Time Remaining: ' + sec + ' second';
-        sec--;
-    } else {
-        clearInterval(countDown);
-        displayTime.textContent = 'Time Remaining: 0!';
-        endQuiz();
+    countDown = setInterval(function() {
+        if (sec > 1) {    
+            displayTime.innerHTML = 'Time Remaining: ' + sec + ' seconds';
+            sec--;
+        } else if (sec === 1) {
+            displayTime.innerHTML = 'Time Remaining: ' + sec + ' second';
+            sec--;
+        } else {
+            clearInterval(countDown);
+            endQuiz();
         }
     }, 1000);
 };
@@ -109,12 +109,13 @@ function answerWrong() {
 // end of the quiz
 function endQuiz() {
     // stop timer
-    clearInterval(timer);
+    clearInterval(countDown);
+    displayTime.textContent = 'Score: ' + sec;
     startButton.classList.remove('hide');
-    intro.classList.remove('hide');
+    outro.classList.remove('hide');
     questionContainerEl.classList.add('hide');
-    displayTime.classList.add('hide');
-    intro.innerHTML = "<h2>All Done!</h2><p>Your final score is ___.</p>";
+    highScore.innerHTML = sec;
+    //debugger;
 };
 
 function highScores() {
@@ -190,7 +191,7 @@ let questions = [
         answer: [
             { text: '1. object-oriented', correct: true },
             { text: '2. object-based', correct: false },
-            { text: '3. procedrual', correct: false },
+            { text: '3. procedural', correct: false },
             { text: '4. none of the above', correct: false }
         ]
     },
