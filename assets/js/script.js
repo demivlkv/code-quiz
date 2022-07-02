@@ -1,3 +1,4 @@
+// variables for index.html
 const displayTime = document.getElementById('timer');
 const questionContainerEl = document.getElementById('question-container');
 const intro = document.getElementById('intro');
@@ -10,12 +11,13 @@ const highScore = document.getElementById('high-score');
 const initialsEl = document.getElementById('user-initials');
 const submitScoreEl = document.getElementById('submit-btn');
 
-startButton.addEventListener('click', startQuiz);
-
 let countDown;
 let time = 60;
 let score = 0;
 let shuffleQuestions, currentQuestionIndex;
+
+// begin quiz!
+startButton.addEventListener('click', startQuiz);
 
 // begin the quiz upon button click
 function startQuiz() {
@@ -33,10 +35,10 @@ function startQuiz() {
 function timer() {
     countDown = setInterval(function() {
         if (time > 1) {    
-            displayTime.innerHTML = 'Time Remaining: ' + time + ' timeonds';
+            displayTime.innerHTML = 'Time Remaining: ' + time + ' seconds';
             time--;
         } else if (time === 1) {
-            displayTime.innerHTML = 'Time Remaining: ' + time + ' timeond';
+            displayTime.innerHTML = 'Time Remaining: ' + time + ' second';
             time--;
         } else {
             endQuiz();
@@ -148,11 +150,7 @@ function saveHighScore(event) {
     localStorage.setItem('highScores', JSON.stringify(highScores));
 
     // redirect user to high score page
-    //window.location.href = './highscores.html';
-};
-
-function loadHighScore() {
-
+    window.location.href = './highscores.html';
 };
 
 let questions = [
