@@ -13,7 +13,7 @@ const submitScoreEl = document.getElementById('submit-btn');
 startButton.addEventListener('click', startQuiz);
 
 let countDown;
-let sec = 60;
+let time = 60;
 let score = 0;
 let shuffleQuestions, currentQuestionIndex;
 
@@ -32,12 +32,12 @@ function startQuiz() {
 // countdown timer
 function timer() {
     countDown = setInterval(function() {
-        if (sec > 1) {    
-            displayTime.innerHTML = 'Time Remaining: ' + sec + ' seconds';
-            sec--;
-        } else if (sec === 1) {
-            displayTime.innerHTML = 'Time Remaining: ' + sec + ' second';
-            sec--;
+        if (time > 1) {    
+            displayTime.innerHTML = 'Time Remaining: ' + time + ' timeonds';
+            time--;
+        } else if (time === 1) {
+            displayTime.innerHTML = 'Time Remaining: ' + time + ' timeond';
+            time--;
         } else {
             endQuiz();
         }
@@ -72,7 +72,7 @@ function displayQuestion(question) {
                 score++;
             } else {
                 answerWrong();
-                sec -= 10; // incorrect answer subtracts 10 sec from time
+                time -= 10; // incorrect answer subtracts 10 time from time
             }
 
             // set up the next question after choosing an answer or end quiz if no questions left
@@ -83,7 +83,7 @@ function displayQuestion(question) {
                 endQuiz();
             }
 
-            // 'correct' or 'wrong' disappears after 2 sec
+            // 'correct' or 'wrong' disappears after 2 time
             setTimeout(function() {
                 displayAnswer.classList.add('hide');
             }, 2000);
@@ -114,27 +114,45 @@ function endQuiz() {
     outro.classList.remove('hide');
     questionContainerEl.classList.add('hide');
     // display score
-    displayTime.textContent = 'Score: ' + sec;
-    highScore.innerHTML = sec;
+    displayTime.textContent = 'Score: ' + time;
+    highScore.innerHTML = time;
     submitScoreEl.addEventListener('click', saveHighScore);
 };
 
 // submit new score
 function saveHighScore(event) {
     event.preventDefault();
-    let initials = initialsEl.value;
-
     // set valid input for submitting initials
+    let initials = initialsEl.value;
     if (initials.length <= 1) {
         alert("Please enter your initials.");
         return;
     }
 
-    // save to localStorage
-    localStorage.setItem("highScore", JSON.stringify(highScore));
+    const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+    const maxHighScores = 5;
+
+    // add new high score
+    const newScore = {
+        name: initials,
+        score: time
+    }
+
+    // add new score into high score list
+    highScores.push(newScore);
+    // sort high scores list
+    highScores.sort( (a,b) =>  b.newScore - a.newScore);
+    // limit number of high scores shown in list
+    highScores.splice(5);
+    // save scores to localStorage
+    localStorage.setItem('highScores', JSON.stringify(highScores));
 
     // redirect user to high score page
-    window.location.href = "./highscores.html";
+    //window.location.href = './highscores.html';
+};
+
+function loadHighScore() {
+
 };
 
 let questions = [
