@@ -85,18 +85,79 @@ h2 {
     margin-bottom: 20px;
 }
 
-.container .intro p {
+/* introductory content */
+
+.intro p {
+    font-size: 18px;
     text-align: center;
     line-height: 2em;
     margin-bottom: 20px;
 }
 
-.container .intro h2 {
+.intro h2 {
     font-size: 44px;
     letter-spacing: -2px;
     color: var(--darkgrey);
     text-align: center;
     margin-bottom: 20px;
+}
+
+/* score page after quiz ends */
+
+.outro h2 {
+    font-size: 44px;
+    letter-spacing: -2px;
+    color: var(--darkgrey);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.outro {
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 2em;
+}
+
+.outro span#high-score {
+    color: var(--darkgrey);
+    font-weight: bold;
+    line-height: 2em;
+    padding: 0;
+}
+
+.outro label {
+    margin: 0 5px;
+    font-weight: normal;
+}
+
+.outro input {
+    background-color: #ffffff;
+    border: 1px solid #95bfce;
+    display: inline-block;
+    padding: 7px 15px;
+    font-size: 16px;
+    color: var(--darkgrey);
+    border-radius: 5px;
+}
+
+.outro .submit-btn {
+    background-color: #568ea3;
+    border: 1px solid #568ea3;
+    border-radius: 10px;
+    width: auto;
+    display: inline-block;
+    color: var(--white);
+    font-size: 16px;
+    margin: 5px;
+    padding: 7px 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.outro .submit-btn:hover {
+    background-color: #95bfce;
+    border: 1px solid #95bfce;
 }
 
 /* buttons edit */
@@ -140,14 +201,14 @@ h2 {
     font-weight: bold;
     padding: 20px 60px;
 }
-
-.hide {
-    display: none;
-}
   
 button[disabled] {
     cursor: default;
     background: #c0c7cf;
+}
+
+.hide {
+    display: none;
 }
 
 /* footer styles */

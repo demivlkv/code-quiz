@@ -37,7 +37,6 @@ function timer() {
             displayTime.innerHTML = 'Time Remaining: ' + sec + ' second';
             sec--;
         } else {
-            clearInterval(countDown);
             endQuiz();
         }
     }, 1000);
@@ -110,12 +109,12 @@ function answerWrong() {
 function endQuiz() {
     // stop timer
     clearInterval(countDown);
-    displayTime.textContent = 'Score: ' + sec;
-    startButton.classList.remove('hide');
+    
     outro.classList.remove('hide');
     questionContainerEl.classList.add('hide');
+    // display score
+    displayTime.textContent = 'Score: ' + sec;
     highScore.innerHTML = sec;
-    //debugger;
 };
 
 function highScores() {
