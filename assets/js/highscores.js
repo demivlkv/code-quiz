@@ -4,8 +4,12 @@ const clearBtnEl = document.getElementById('clear-btn');
 const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 
 function loadHighScore() {
-    highScores.sort( (a,b) =>  b.newScore - a.newScore);
+    // sort scores by highest to lowest
+    highScores.sort(function(a,b) {
+    return b.score - a.score;
+    })
 
+    // create li tag for each score entry
     highScores.forEach(function(highScores) {
         let liTag = document.createElement('li');
         liTag.textContent = highScores.name + ' - ' + highScores.score;
@@ -21,10 +25,14 @@ function goBack() {
 };
 
 function clearHighScore() {
-    
+    // clear scores in localStorage
+    localStorage.clear(highScores);
 };
 
 loadHighScore();
 
 backBtnEl.addEventListener('click', goBack);
-clearBtnEl.addEventListener('click', clearHighScore);
+clearBtnEl.addEventListener('click', function() {
+    clearHighScore();
+    window.location.reload();
+});

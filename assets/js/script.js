@@ -108,7 +108,7 @@ function answerWrong() {
     displayAnswer.setAttribute('style', 'color: #ef626c');
 };
 
-// end quiz and display user score
+// end quiz & display user score
 function endQuiz() {
     // stop timer
     clearInterval(countDown);
@@ -132,7 +132,6 @@ function saveHighScore(event) {
     }
 
     const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-    const maxHighScores = 5;
 
     // add new high score
     const newScore = {
@@ -144,8 +143,6 @@ function saveHighScore(event) {
     highScores.push(newScore);
     // sort high scores list
     highScores.sort( (a,b) =>  b.newScore - a.newScore);
-    // limit number of high scores shown in list
-    highScores.splice(5);
     // save scores to localStorage
     localStorage.setItem('highScores', JSON.stringify(highScores));
 

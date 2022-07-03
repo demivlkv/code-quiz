@@ -104,19 +104,19 @@ h2 {
 
 /* score page after quiz ends */
 
+.outro {
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 2em;
+}
+
 .outro h2 {
     font-size: 44px;
     letter-spacing: -2px;
     color: var(--darkgrey);
     text-align: center;
     margin-bottom: 20px;
-}
-
-.outro {
-    font-size: 20px;
-    font-weight: normal;
-    text-align: center;
-    line-height: 2em;
 }
 
 .outro span#high-score {
