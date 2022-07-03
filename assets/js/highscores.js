@@ -1,6 +1,6 @@
 // list variables for highscores.html
-const highScoresListEl = document.getElementById('highscores-list');
 const backBtnEl = document.getElementById('back-btn');
+const clearBtnEl = document.getElementById('clear-btn');
 const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 
 function loadHighScore() {
@@ -15,4 +15,16 @@ function loadHighScore() {
     })
 };
 
+function goBack() {
+    // redirect user to return to main page
+    window.location.href = './index.html';
+};
+
+function clearHighScore() {
+    
+};
+
 loadHighScore();
+
+backBtnEl.addEventListener('click', goBack);
+clearBtnEl.addEventListener('click', clearHighScore);

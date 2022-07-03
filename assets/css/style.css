@@ -189,13 +189,6 @@ h2 {
     background-color: #95bfce;
 }
 
-.container .navigate {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
 .start-btn {
     font-size: 30px;
     font-weight: bold;
@@ -205,6 +198,13 @@ h2 {
 button[disabled] {
     cursor: default;
     background: #c0c7cf;
+}
+
+.container .navigate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .hide {
@@ -219,4 +219,47 @@ footer {
     letter-spacing: -1px;
     text-align: center;
     font-weight: none;
+}
+
+/* highscores.html css edits */
+
+.highscores-display ul {
+    margin: 20px auto;
+    width: 50%;
+    list-style: none;
+}
+
+.highscores-display ul li:hover {
+    background-color: #95bfce;
+}
+
+.highscores-display li {
+    font-size: 18px;
+    line-height: 2em;
+    background-color: #efefef;
+    padding: 10px;
+    list-style: decimal inside none;
+}
+
+.highscores-display li:nth-child(odd) {
+    background-color: #bad0d8;
+  }
+
+.highscores-display .btn {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 15px 30px;
+    background-color: #568ea3;
+    border: none;
+    border-radius: 10px;
+    width: 30%;
+    display: inline-block;
+    color: var(--white);
+    margin: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.highscores-display .btn:hover {
+    background-color: #95bfce;
 }
