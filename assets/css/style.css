@@ -1,8 +1,6 @@
 :root {
-    --mint: #a1fcdf;
-    --pink: #d5aca9;
-    --white: #fffcf9;
-    --green: #84dccf;
+    --white: #fff9fa;
+    --green: #00ad93;
     --red: #ef626c;
     --darkgrey: #312f2f;
 }
@@ -15,13 +13,18 @@
 }
 
 body {
+    background: linear-gradient(#759ead, var(--white));
     background-color: var(--white);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    height: 100%;
 }
 
 /* header styles */
 
 header {
-    background-color: var(--white);
+    background-color: transparent;
     padding: 20px 35px;
     display: flex;
     justify-content: space-between;
@@ -72,8 +75,8 @@ span {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
+    background-color: #fff;
+    border: 1px solid #fff;
     border-radius: 30px;
 }
 

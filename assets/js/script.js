@@ -12,7 +12,7 @@ const initialsEl = document.getElementById('user-initials');
 const submitScoreEl = document.getElementById('submit-btn');
 
 let countDown;
-let time = 60;
+let time = 75;
 let score = 0;
 let shuffleQuestions, currentQuestionIndex;
 
@@ -98,7 +98,7 @@ function displayQuestion(question) {
 function answerCorrect() {
     displayAnswer.classList.remove('hide');
     displayAnswer.textContent = 'Correct!';
-    displayAnswer.setAttribute('style', 'color: #84dccf');
+    displayAnswer.setAttribute('style', 'color: #00ad93');
 };
 
 // display 'wrong' after incorrect response
